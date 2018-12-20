@@ -15,7 +15,7 @@ public class Baraja {
             else if (i == 3) palo = 'R';
             else palo = 'T';
             for (int j = 1; j < 14; j++) {
-                this.baraja[i * j + j] = new Carta(i * j + j, palo);
+                this.baraja[i * j + j-1] = new Carta(i * j + j, palo);
             }
         }
     }
