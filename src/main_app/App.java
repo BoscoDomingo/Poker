@@ -5,7 +5,14 @@ public class App {
         Baraja baraja = new Baraja();
         Carta carta = null;
         baraja.generarBaraja();
-        carta = baraja.getCarta(4);
-        System.out.println(carta.getNumero() + " " + carta.getPalo());
+        for (int i = 0; i < 52; i++) {
+            carta = baraja.getCarta(i);
+            System.out.println(carta.getNumero() + " " + carta.getPalo());
+        }
+        baraja.barajear();
+        for (int i = 0; i < 52; i++) {
+            carta = baraja.getCarta(i);
+            System.out.println(carta.getNumero() + " " + carta.getPalo());
+        }
     }
 }
