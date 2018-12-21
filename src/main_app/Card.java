@@ -1,28 +1,28 @@
 package main_app;
 
 public class Card {
-    private int numero;
-    private char palo;
+    private int number;
+    private char suit;
 
-    public Card(int numero, char palo) {
-        this.numero = numero;
-        this.palo = palo;
+    public Card(int number, char suit) {
+        this.number = number;
+        this.suit = suit;
     }
 
-    public int getNumero() {
-        return numero;
+    public int getNumber() {
+        return number;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public void setNumber(int number) {
+        this.number = number;
     }
 
-    public char getPalo() {
-        return palo;
+    public char getSuit() {
+        return suit;
     }
 
-    public void setPalo(char palo) {
-        this.palo = palo;
+    public void setSuit(char suit) {
+        this.suit = suit;
     }
 
 }

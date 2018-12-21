@@ -4,15 +4,15 @@ public class App {
     public static void run() {
         Deck deck = new Deck();
         Card card = null;
-        deck.generarBaraja();
+        deck.generateDeck();
         for (int i = 0; i < 52; i++) {
-            card = deck.getCarta(i);
-            System.out.println(card.getNumero() + " " + card.getPalo());
+            card = deck.getCard(i);
+            System.out.println(card.getNumber() + " " + card.getSuit());
         }
-        deck.barajear();
+        deck.sort();
         for (int i = 0; i < 52; i++) {
-            card = deck.getCarta(i);
-            System.out.println(card.getNumero() + " " + card.getPalo());
+            card = deck.getCard(i);
+            System.out.println(card.getNumber() + " " + card.getSuit());
         }
     }
 }
