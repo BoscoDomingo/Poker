@@ -9,7 +9,7 @@ public class App {
             card = deck.getCard(i);
             System.out.println(card.getNumber() + " " + card.getSuit());
         }
-        deck.sort();
+        //deck.sort();
         for (int i = 0; i < 52; i++) {
             card = deck.getCard(i);
             System.out.println(card.getNumber() + " " + card.getSuit());
