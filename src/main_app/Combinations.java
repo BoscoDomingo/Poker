@@ -3,10 +3,9 @@ package main_app;
 public class Combinations {
 
     void bubbleSort(Card[] arr) {
-        int n = arr.length;
         int temp = 0;
-        for (int i = 0; i < n; i++) {
-            for (int j = 1; j < (n - i); j++) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 1; j < (arr.length - i); j++) {
                 if (arr[j - 1].getNumber() > arr[j].getNumber()) {
                     temp = arr[j - 1].getNumber();
                     arr[j - 1].setNumber(arr[j].getNumber());
@@ -15,23 +14,26 @@ public class Combinations {
             }
         }
     }
+//TODO: Mover de clase
+    private void printHand(Card[] hand) {
+        for (int i = 0; i < hand.length; i++) {
+            System.out.print(hand[i].getNumber() + "" + hand[i].getSuit() + " ");
+        }
+        System.out.println();
+    }
 
     public int checkCombinations(Card[] hand) {
         Card[] aux = hand;
         bubbleSort(aux);
-        for (int i = 0; i < aux.length; i++) {
-            System.out.print(aux[i].getNumber()+ "" + aux[i].getSuit() + " ");
-        }
-        System.out.println();
         int combination = 1;
-        if(checkRoyalFlush(aux))combination = 10;
+        if (checkRoyalFlush(aux)) combination = 10;
         else if (checkStraightFlush(aux)) combination = 9;
         else if (checkFourOfAKind(aux)) combination = 8;
         else if (checkFullHouse(aux)) combination = 7;
         else if (checkFlush(aux)) combination = 6;
         else if (checkStraight(aux)) combination = 5;
         else if (checkThreeOfAKind(aux)) combination = 4;
-        else if (checkTwoPairs(hand)) combination = 3;
+        else if (checkTwoPairs(aux)) combination = 3;
         else if (checkPair(aux)) combination = 2;
         return combination;
     }
@@ -54,7 +56,6 @@ public class Combinations {
 
     private boolean checkThreeOfAKind(Card[] hand) {
         boolean found = false;
-
         for (int i = 0; i < hand.length - 2; i++) {
             if (hand[i].getNumber() == hand[i + 1].getNumber() && hand[i].getNumber() == hand[i + 2].getNumber())
                 found = true;
@@ -90,8 +91,15 @@ public class Combinations {
     }
 
     private boolean checkFourOfAKind(Card[] hand) {
-        return (hand[0].getNumber() == hand[1].getNumber() && hand[1].getNumber() == hand[2].getNumber() && hand[2].getNumber() == hand[3].getNumber() ||
-                hand[4].getNumber() == hand[1].getNumber() && hand[1].getNumber() == hand[2].getNumber() && hand[2].getNumber() == hand[3].getNumber());
+        boolean found = false;
+        int i = 0, equalCards = 1;
+        while (equalCards < 4 && i < hand.length - 1) {
+            if (hand[i].getNumber() == hand[i + 1].getNumber()) {
+                equalCards++;
+            } else equalCards = 1;
+            i++;
+        }
+        return equalCards >= 4;
     }
 
     private boolean checkStraightFlush(Card[] hand) {
@@ -105,7 +113,7 @@ public class Combinations {
         return (found == 4 && flush);
     }
 
-    private boolean checkRoyalFlush(Card[] hand){
+    private boolean checkRoyalFlush(Card[] hand) {
         return (checkStraightFlush(hand) && hand[0].getNumber() == 1 && hand[1].getNumber() == 10);
     }
 }
