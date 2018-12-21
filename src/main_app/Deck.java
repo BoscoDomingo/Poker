@@ -20,9 +20,8 @@ public class Deck {
         }
     }
 
-    public void sort()
+    public void shuffle()
     {
-        // If running on Java 6 or older, use `new Random()` on RHS here
         Random rnd = new Random();
         for (int i = this.deck.length - 1; i > 0; i--)
         {
