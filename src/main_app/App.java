@@ -2,17 +2,17 @@ package main_app;
 
 public class App {
     public static void run() {
-        Baraja baraja = new Baraja();
-        Carta carta = null;
-        baraja.generarBaraja();
+        Deck deck = new Deck();
+        Card card = null;
+        deck.generarBaraja();
         for (int i = 0; i < 52; i++) {
-            carta = baraja.getCarta(i);
-            System.out.println(carta.getNumero() + " " + carta.getPalo());
+            card = deck.getCarta(i);
+            System.out.println(card.getNumero() + " " + card.getPalo());
         }
-        baraja.barajear();
+        deck.barajear();
         for (int i = 0; i < 52; i++) {
-            carta = baraja.getCarta(i);
-            System.out.println(carta.getNumero() + " " + carta.getPalo());
+            card = deck.getCarta(i);
+            System.out.println(card.getNumero() + " " + card.getPalo());
         }
     }
 }

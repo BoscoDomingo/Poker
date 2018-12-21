@@ -2,10 +2,10 @@ package main_app;
 
 import java.util.Random;
 
-public class Baraja {
-    private Carta[] baraja = new Carta[52];
+public class Deck {
+    private Card[] baraja = new Card[52];
 
-    public Carta getCarta(int i) {
+    public Card getCarta(int i) {
         return this.baraja[i];
     }
 
@@ -16,7 +16,7 @@ public class Baraja {
             else if (i / 13 == 1) palo = 'C';
             else if (i / 13 == 2) palo = 'R';
             else palo = 'T';
-            this.baraja[i] = new Carta(i % 13 + 1, palo);
+            this.baraja[i] = new Card(i % 13 + 1, palo);
         }
     }
 
@@ -28,7 +28,7 @@ public class Baraja {
         {
             int index = rnd.nextInt(i + 1);
             // Simple swap
-            Carta a = this.baraja[index];
+            Card a = this.baraja[index];
             this.baraja[index] = this.baraja[i];
             this.baraja[i] = a;
         }

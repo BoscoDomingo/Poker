@@ -1,10 +1,10 @@
 package main_app;
 
-public class Carta {
+public class Card {
     private int numero;
     private char palo;
 
-    public Carta(int numero, char palo) {
+    public Card(int numero, char palo) {
         this.numero = numero;
         this.palo = palo;
     }
