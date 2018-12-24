@@ -12,8 +12,8 @@ public class Test {
         System.out.println(comb.checkCombinations(hand3));
         Card[] hand4 = {new Card(10, 'C'), new Card(1, 'H'), new Card(10, 'H'), new Card(12, 'H'), new Card(10, 'H')};
         System.out.println(comb.checkCombinations(hand4));
-        // App.run();
         Card[] hand5 = {new Card(10, 'H'), new Card(1, 'H'), new Card(11, 'H'), new Card(12, 'H'), new Card(9, 'H')};
         System.out.println(comb.checkCombinations(hand5));
+        // App.run();
     }
 }
