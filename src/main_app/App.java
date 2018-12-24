@@ -10,5 +10,7 @@ public class App {
             card = deck.getCard(i);
             System.out.println(card.getNumber() + " " + card.getSuit());
         }
+        Poker game = new Poker();
+        game.startGame(deck);
     }
 }
