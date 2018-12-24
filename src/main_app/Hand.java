@@ -22,6 +22,19 @@ public class Hand {
         }
     }
 
+    public void bubbleSort() {
+        int temp = 0;
+        for (int i = 0; i < this.cards.size(); i++) {
+            for (int j = 1; j < (this.cards.size() - i); j++) {
+                if (this.cards.get(j-1).getNumber() > this.cards.get(j).getNumber()) {
+                    temp = this.cards.get(j-1).getNumber();
+                    this.cards.get(j-1).setNumber(this.cards.get(j).getNumber());
+                    this.cards.get(j).setNumber(temp);
+                }
+            }
+        }
+    }
+
     public ArrayList<Card> getCards() {
         return cards;
     }
