@@ -2,7 +2,7 @@ package main_app;
 
 public class Combinations {
 
-    void bubbleSort(Card[] arr) {
+    private static void bubbleSort(Card[] arr) {
         int temp = 0;
         for (int i = 0; i < arr.length; i++) {
             for (int j = 1; j < (arr.length - i); j++) {
@@ -15,14 +15,14 @@ public class Combinations {
         }
     }
 //TODO: Mover de clase
-    private void printHand(Card[] hand) {
+    private static void printHand(Card[] hand) {
         for (int i = 0; i < hand.length; i++) {
             System.out.print(hand[i].getNumber() + "" + hand[i].getSuit() + " ");
         }
         System.out.println();
     }
 
-    public int checkCombinations(Card[] hand) {
+    public static int checkCombinations(Card[] hand) {
         Card[] aux = hand;
         bubbleSort(aux);
         int combination = 1;
@@ -38,7 +38,7 @@ public class Combinations {
         return combination;
     }
 
-    private boolean checkPair(Card[] hand) {
+    private static boolean checkPair(Card[] hand) {
         boolean found = false;
         for (int i = 0; i < hand.length - 1; i++) {
             if (hand[i].getNumber() == hand[i + 1].getNumber()) found = true;
@@ -46,7 +46,7 @@ public class Combinations {
         return found;
     }
 
-    private boolean checkTwoPairs(Card[] hand) {
+    private static boolean checkTwoPairs(Card[] hand) {
         int numFound = 0;
         for (int i = 0; i < hand.length - 1; i++) {
             if (hand[i].getNumber() == hand[i + 1].getNumber()) numFound++;
@@ -54,7 +54,7 @@ public class Combinations {
         return numFound == 2;
     }
 
-    private boolean checkThreeOfAKind(Card[] hand) {
+    private static boolean checkThreeOfAKind(Card[] hand) {
         boolean found = false;
         for (int i = 0; i < hand.length - 2; i++) {
             if (hand[i].getNumber() == hand[i + 1].getNumber() && hand[i].getNumber() == hand[i + 2].getNumber())
@@ -63,7 +63,7 @@ public class Combinations {
         return found;
     }
 
-    private boolean checkStraight(Card[] hand) {
+    private static boolean checkStraight(Card[] hand) {
         int found = 0;
         for (int i = 0; i < hand.length - 1; i++) {
             if ((hand[i + 1].getNumber() - hand[i].getNumber()) == 1 || (hand[i + 1].getNumber() - hand[i].getNumber()) == 9)
@@ -72,7 +72,7 @@ public class Combinations {
         return found == 4;
     }
 
-    private boolean checkFlush(Card[] hand) {
+    private static boolean checkFlush(Card[] hand) {
         boolean found = true;
         for (int i = 0; i < hand.length - 1; i++) {
             if (hand[i].getSuit() != hand[i + 1].getSuit()) found = false;
@@ -80,7 +80,7 @@ public class Combinations {
         return found;
     }
 
-    private boolean checkFullHouse(Card[] hand) {
+    private static boolean checkFullHouse(Card[] hand) {
         boolean found = false;
         if (hand[0].getNumber() == hand[1].getNumber() && hand[1].getNumber() == hand[2].getNumber()) {
             if (hand[3].getNumber() == hand[4].getNumber()) found = true;
@@ -90,7 +90,7 @@ public class Combinations {
         return found;
     }
 
-    private boolean checkFourOfAKind(Card[] hand) {
+    private static boolean checkFourOfAKind(Card[] hand) {
         boolean found = false;
         int i = 0, equalCards = 1;
         while (equalCards < 4 && i < hand.length - 1) {
@@ -102,7 +102,7 @@ public class Combinations {
         return equalCards >= 4;
     }
 
-    private boolean checkStraightFlush(Card[] hand) {
+    private static boolean checkStraightFlush(Card[] hand) {
         int found = 0;
         boolean flush = true;
         for (int i = 0; i < hand.length - 1; i++) {
@@ -113,7 +113,7 @@ public class Combinations {
         return (found == 4 && flush);
     }
 
-    private boolean checkRoyalFlush(Card[] hand) {
+    private static boolean checkRoyalFlush(Card[] hand) {
         return (checkStraightFlush(hand) && hand[0].getNumber() == 1 && hand[1].getNumber() == 10);
     }
 }
