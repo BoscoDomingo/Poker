@@ -4,11 +4,7 @@ public class Poker {
     private Table table;
 
     public void startGame(Deck deck) {
-        Player player1 = new Player(0, 1000, "John Smith");
-        Player player2 = new Player(1, 1000, "Mary Rothschild");
-        Player[] players = new Player[2];
-        players[0] = player1;
-        players[1] = player2;
+        Player[] players = {new Player(0, 1000, "John Smith"), new Player(1, 1000, "Mary Rothschild")};
         this.table.setPlayers(players);
         while (gameOver() != -1) {
             this.table.startTurn();

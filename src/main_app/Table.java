@@ -7,12 +7,16 @@ public class Table {
 
     public Table(Player[] players) {
         this.players = players;
-        currentTurn = new Turn(0, 0);
+        currentTurn = new Turn((int) Math.random());
     }
 
-    public void startTurn(){
-        currentTurn
+    public void startTurn() {
+        currentTurn.setTurnNumber(currentTurn.getTurnNumber() + 1);
+        currentTurn.setCurrentPlayer((currentTurn.getCurrentPlayer() + 1) % 2);
+        currentTurn.setPot(0);
+        currentTurn.setHighestCombination(0);
     }
+
     public Player[] getPlayers() {
         return players;
     }
