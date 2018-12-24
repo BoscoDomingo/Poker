@@ -22,14 +22,17 @@ public class Player {
 
     public ArrayList<Card> drawFromDeck(ArrayList<Card> cardsFromDeck) {
         ArrayList<Card> cardsToReturnToDeck = selectCardsToDiscard(cardsFromDeck.size());
-
-        for (Card removed : cardsToReturnToDeck) {
-            this.hand.getCards().remove(removed);
+        if (cardsToReturnToDeck != null) {
+            for (Card removed : cardsToReturnToDeck) {
+                this.hand.getCards().remove(removed);
+            }
+            for (Card added : cardsFromDeck) {
+                this.hand.getCards().add(added);
+            }
+            return cardsToReturnToDeck;
+        }else{
+            return cardsFromDeck;
         }
-        for (Card added : cardsFromDeck) {
-            this.hand.getCards().add(added);
-        }
-        return cardsToReturnToDeck;
     }
 
     private ArrayList<Card> selectCardsToDiscard(int numberOfCardsToDiscard) {
@@ -60,7 +63,7 @@ public class Player {
     }
 
     private void printDiscardWelcome(int numberOfCardsToDiscard) {
-        System.out.println("\nPlease choose the " + numberOfCardsToDiscard + " card(s) you want to discard by inputting the index of the card (1st card will be 0, 2nd will be 1, etc.) separated by spaces and press Enter\n(eg. 0 3 will discard 1st and 4th cards):");
+        System.out.println("\nPlease choose the " + numberOfCardsToDiscard + " card(s) you want to discard separated by spaces and press Enter\n(eg. '1 3 .' will discard 1st and 3rd cards):");
         System.out.println("When done choosing, just enter any character and press Enter");
         System.out.println("(Note: If you wish to cancel, input any letter)");
     }
@@ -94,11 +97,12 @@ public class Player {
         boolean done = false;
         while (!done) {
             while (scan.hasNextInt()) {
-                int i = scan.nextInt();
+                int i = scan.nextInt() - 1;
                 if (i > this.hand.getCards().size() - 1) {
-                    System.out.println(i + " is not a valid index. Must be between 0 and 4. Please try again.");
+                    System.out.println(i + " is not a valid index. Must be between 1 and 5. Please try again.");
                     chosenCards.clear();
                     scan.reset();
+
                 } else {
                     chosenCards.add(this.hand.getCards().get(i));
                 }
@@ -110,8 +114,6 @@ public class Player {
                     System.out.println("You didn't pick enough cards. Try again");
                 }
                 chosenCards.clear();
-                scan.next();
-                //prepareDiscard(chosenCards, scan, numberOfCardsToDiscard);
             } else {
                 done = true;
             }
@@ -143,10 +145,6 @@ public class Player {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getBalance() {

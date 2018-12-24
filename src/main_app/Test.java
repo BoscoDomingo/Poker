@@ -25,13 +25,12 @@ public class Test {
 
         cards1.add(new Card(3, 'C'));
         cards1.add(new Card(2, 'D'));
-        cards1.add(new Card(5, 'D'));
-
+        // cards1.add(new Card(5, 'D'));
+        Hand hand2 = new Hand();
         cards2 = player1.drawFromDeck(cards1);
-
-        for (Card c : cards2){
-
-        }
+        hand2.setCards(cards2);
+        hand2.printHand();
+        player1.getHand().printHand();
         // App.run();
     }
 }
