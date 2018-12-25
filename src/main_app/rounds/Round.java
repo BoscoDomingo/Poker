@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class Round {
-    protected Turn currentTurn; //se va
     protected int currentPlayer;
     protected int startingPlayer;
     protected Player[] stillPlaying;
