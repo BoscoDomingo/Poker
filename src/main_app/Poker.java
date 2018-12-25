@@ -6,10 +6,12 @@ public class Poker {
     public void startGame(Deck deck) {
         Player[] players = {new Player(0, 1000, "John Smith"), new Player(1, 1000, "Mary Rothschild")};
         this.table.setPlayers(players);
+
         while (gameOver() != -1) {
-            this.table.startTurn();
+            table.startRound(deck);
         }
-        System.out.println("Congratulations " + gameOver() + " for winning! Thanks for playing!\nPress any button to exit");
+
+        System.out.println("Congratulations " + table.getPlayers()[gameOver()].getName() + " for winning! Thanks for playing!\nPress any button to exit");
     }
 
     private int gameOver() {

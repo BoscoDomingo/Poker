@@ -154,4 +154,8 @@ public class Player {
     public void setBalance(int balance) {
         this.balance = balance;
     }
+
+    public String getName() {
+        return name;
+    }
 }

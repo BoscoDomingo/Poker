@@ -1,20 +1,17 @@
 package main_app;
 
+import main_app.rounds.DrawingRound;
+import main_app.rounds.Round;
+
+import java.util.ArrayList;
+
 public class Table {
     private Player[] players = new Player[2];
-    private Turn currentTurn;
+    private Round round;
 
-
-    public Table(Player[] players) {
-        this.players = players;
-        currentTurn = new Turn((int) Math.random());
-    }
-
-    public void startTurn() {
-        currentTurn.setTurnNumber(currentTurn.getTurnNumber() + 1);
-        currentTurn.setCurrentPlayer((currentTurn.getCurrentPlayer() + 1) % 2);
-        currentTurn.setPot(0);
-        currentTurn.setHighestCombination(0);
+    public void startRound(Deck deck){
+        this.round = new DrawingRound();
+        round.start(players, deck);
     }
 
     public Player[] getPlayers() {
@@ -25,11 +22,11 @@ public class Table {
         this.players = players;
     }
 
-    public Turn getCurrentTurn() {
-        return currentTurn;
+    public Round getRound() {
+        return round;
     }
 
-    public void setCurrentTurn(Turn currentTurn) {
-        this.currentTurn = currentTurn;
+    public void setRound(Round round) {
+        this.round = round;
     }
 }
