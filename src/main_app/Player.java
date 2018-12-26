@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Player {
-    Hand hand;
-    int id;
-    int balance;
-    String name;
+    private Hand hand;
+    private int id;
+    private int balance;
+    private String name;
 
     public Player(int id, int balance, String name) {
         this.hand = new Hand();
@@ -153,5 +153,9 @@ public class Player {
 
     public void setBalance(int balance) {
         this.balance = balance;
+    }
+
+    public String getName() {
+        return name;
     }
 }

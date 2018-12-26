@@ -1,6 +1,7 @@
 package main_app;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Test {
 
@@ -19,7 +20,7 @@ public class Test {
         for (int i = 0; i < hand.length; i++) {
             player1.getHand().getCards().add(hand[i]);
         }
-        player1.hand.printHand();
+        player1.getHand().printHand();
         ArrayList<Card> cards1 = new ArrayList<>();
         ArrayList<Card> cards2 = new ArrayList<>();
 
@@ -31,6 +32,10 @@ public class Test {
         hand2.setCards(cards2);
         hand2.printHand();
         player1.getHand().printHand();
+        Random r = new Random();
+        for (int i = 0; i < 11; i++) {
+            System.out.println((r.nextInt(2)));
+        }
         // App.run();
     }
 }
