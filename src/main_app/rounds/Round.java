@@ -24,4 +24,6 @@ public abstract class Round {
     }
 
     public abstract void start(Player[] players, Deck deck);
+
+    public abstract void start(Player[] players);
 }
