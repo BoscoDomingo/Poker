@@ -3,14 +3,12 @@ package main_app;
 import main_app.rounds.DrawingRound;
 import main_app.rounds.Round;
 
-import java.util.ArrayList;
-
 public class Table {
     private Player[] players = new Player[2];
     private Round round;
 
-    public void startRound(Deck deck){
-        this.round = new DrawingRound();
+    public void startRound(Deck deck) {
+        this.round = new DrawingRound(players, deck);
         round.start(players, deck);
     }
 

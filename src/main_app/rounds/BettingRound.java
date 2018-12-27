@@ -18,8 +18,7 @@ public class BettingRound extends Round {
     }
 
     @Override
-    public void start(Player[] players) {
+    public void start(Player[] players, Deck deck) {
 
     }
-
 }

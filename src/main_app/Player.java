@@ -20,6 +20,36 @@ public class Player {
         return balance <= 0;
     }
 
+    public int askForXCards() {
+        System.out.println("Choose how many cards you want to discard (number between 0-5)");
+        Scanner scan = new Scanner(System.in);
+        while (!scan.hasNextInt()) {
+            System.out.println("Please enter a number");
+            scan.next();
+        }
+        int number = scan.nextInt();
+        while (number < 0 || number > 5) {
+            System.out.println("Please enter a valid answer(number between 0-5)");
+            while (!scan.hasNextInt()) {
+                System.out.println("Please enter a number");
+                scan.next();
+            }
+            number = scan.nextInt();
+        }
+        return number;
+    }
+
+    public boolean askIfStillPlaying() {
+        System.out.println("Do you want to keep playing this turn? (Y/N)");
+        Scanner scan = new Scanner(System.in);
+        String selector = scan.nextLine();
+        while (!(selector.equalsIgnoreCase("yes") || selector.equalsIgnoreCase("y") || selector.equalsIgnoreCase("no") || selector.equalsIgnoreCase("n"))) {
+            System.out.println("Please enter a valid answer");
+            selector = scan.nextLine();
+        }
+        return (selector.equalsIgnoreCase("y") || selector.equalsIgnoreCase("yes"));
+    }
+
     public ArrayList<Card> drawFromDeck(ArrayList<Card> cardsFromDeck) {
         ArrayList<Card> cardsToReturnToDeck = selectCardsToDiscard(cardsFromDeck.size());
         if (cardsToReturnToDeck != null) {
@@ -30,7 +60,7 @@ public class Player {
                 this.hand.getCards().add(added);
             }
             return cardsToReturnToDeck;
-        }else{
+        } else {
             return cardsFromDeck;
         }
     }
