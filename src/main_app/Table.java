@@ -17,6 +17,9 @@ public class Table {
         int pot = round.start(players, deck);
         System.out.println("\tEND OF DRAWING ROUND\n\n***************************************************\n\n\tSTART OF SHOWDOWN");
         this.round = new FinalRound(players, deck);
+        int winner = round.start(players, deck);
+        System.out.println("Winner of the round is: " + players[winner].getName());
+        players[winner].setBalance(players[winner].getBalance() + pot);
     }
 
     public Player[] getPlayers() {
