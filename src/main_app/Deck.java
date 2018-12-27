@@ -28,6 +28,15 @@ public class Deck {
         }
     }
 
+    public ArrayList<Card> pickXCards(int number) {
+        ArrayList<Card> picked = new ArrayList<>();
+        Random r = new Random();
+        for (int i = 1; i <= number; i++) {
+            picked.add(getCard(r.nextInt(deck.size()))); //el mazo varía de tamaño a lo largo de la partida
+        }
+        return picked;
+    }
+
     public void addCards(ArrayList<Card> cardsToAdd) {
         for (Card card : cardsToAdd) {
             this.deck.add(card);
@@ -46,7 +55,7 @@ public class Deck {
         return deck.indexOf(card);
     }
 
-    public void addCard(Card card){
+    public void addCard(Card card) {
         this.deck.add(card);
     }
 }
