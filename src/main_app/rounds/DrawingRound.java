@@ -9,9 +9,7 @@ public class DrawingRound extends Round {
         super(players, deck);
     }
 
-    public void start(main_app.Player[] players, Deck deck) {
-        /*currentTurn.setStartingPlayer((currentTurn.getStartingPlayer() + 1) % players.length);
-        currentTurn.setCurrentPlayer(currentTurn.getStartingPlayer());*/
+    public int start(Player[] players, Deck deck) {
         while (!isRoundDone()) {
             if (stillPlaying[currentPlayer] != null) {
                 int howManyCards = players[currentPlayer].askForXCards();
@@ -26,7 +24,7 @@ public class DrawingRound extends Round {
             }
             this.currentPlayer = (this.currentPlayer + 1) % players.length;
         }
-
+        return 0;
     }
 
 }

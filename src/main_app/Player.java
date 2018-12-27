@@ -20,6 +20,7 @@ public class Player {
         return balance <= 0;
     }
 
+    //Drawing Round
     public int askForXCards() {
         System.out.println("Choose how many cards you want to discard (number between 0-5)");
         Scanner scan = new Scanner(System.in);
@@ -164,7 +165,54 @@ public class Player {
         return confirmation;
     }
 
+    //Betting Round
+    public int[] bettingAction(int minimumBet) {
+        System.out.println("Choose your next action: \n\t0-Bet the minimum possible amount (" + minimumBet + ")\n\t1-Raise the bet\n\t2-Withdraw this round");
+        Scanner scan = new Scanner(System.in);
+        while (!scan.hasNextInt()) {
+            System.out.println("Please enter a number");
+            scan.next();
+        }
 
+        int[] number = new int[2];
+        number[0] = scan.nextInt();
+
+        while (number[0] < 0 || number[0] > 2) {
+            System.out.println("Please enter a valid answer(number between 0-2)");
+            while (!scan.hasNextInt()) {
+                System.out.println("Please enter a number");
+                scan.next();
+            }
+            number[0] = scan.nextInt();
+        }
+
+        if (number[0] == 1) {
+            number[1] = raiseBet(minimumBet);
+        }
+
+        return number;
+    }
+
+    private int raiseBet(int minimumBet) {
+        System.out.println("How much do you want to bet?");
+        Scanner scan = new Scanner(System.in);
+        while (!scan.hasNextInt()) {
+            System.out.println("Please enter a number");
+            scan.next();
+        }
+        int number = scan.nextInt();
+        while (number < minimumBet || number > this.getBalance()) {
+            System.out.println("Please enter a valid answer(number between " + minimumBet + "- + this.getBalance() + ");
+            while (!scan.hasNextInt()) {
+                System.out.println("Please enter a number");
+                scan.next();
+            }
+            number = scan.nextInt();
+        }
+        return number;
+    }
+
+    //Getters & Setters
     public Hand getHand() {
         return hand;
     }

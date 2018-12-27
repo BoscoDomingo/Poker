@@ -23,5 +23,5 @@ public abstract class Round {
         return this.currentPlayer == this.startingPlayer;
     }
 
-    public abstract void start(Player[] players, Deck deck);
+    public abstract int start(Player[] players, Deck deck);
 }

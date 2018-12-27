@@ -1,6 +1,8 @@
 package main_app;
 
+import main_app.rounds.BettingRound;
 import main_app.rounds.DrawingRound;
+import main_app.rounds.FinalRound;
 import main_app.rounds.Round;
 
 public class Table {
@@ -10,6 +12,11 @@ public class Table {
     public void startRound(Deck deck) {
         this.round = new DrawingRound(players, deck);
         round.start(players, deck);
+        System.out.println("\tEND OF DRAWING ROUND\n\n***************************************************\n\n\tSTART OF BETTING ROUND");
+        this.round = new BettingRound(players, deck);
+        int pot = round.start(players, deck);
+        System.out.println("\tEND OF DRAWING ROUND\n\n***************************************************\n\n\tSTART OF SHOWDOWN");
+        this.round = new FinalRound(players, deck);
     }
 
     public Player[] getPlayers() {
