@@ -56,8 +56,7 @@ public class Deck {
 
     public Card selectCard(int i) {
         if(i<deck.size()) {
-            Card card = deck.get(i);
-            return card;
+            return deck.get(i);
         } else return null;
     }
 
