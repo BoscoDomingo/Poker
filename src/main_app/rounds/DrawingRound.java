@@ -27,10 +27,6 @@ public class DrawingRound extends Round {
             if (howManyCards != 0) {
                 players[currentPlayer].drawFromDeck(deck.pickXCards(howManyCards));
                 players[currentPlayer].getHand().printHand();
-              /*  keepPlaying = players[currentPlayer].askIfStillPlaying();
-                if (!keepPlaying) {
-                    this.stillPlaying[currentPlayer] = false;
-                }*/
             }
             this.currentPlayer = (this.currentPlayer + 1) % players.length;
         } while (!isRoundDone());
