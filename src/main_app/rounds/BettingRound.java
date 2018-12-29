@@ -7,10 +7,11 @@ public class BettingRound extends Round {
     private int pot;
     private int minimumBet;
 
-    public BettingRound(Player[] players, Deck deck, int startingPlayer) {
+    public BettingRound(Player[] players, Deck deck, Player[] stillPlayingAfterDraws, int startingPlayer) {
         super(players, deck);
         this.pot = 0;
         this.minimumBet = 100;
+        this.stillPlaying = stillPlayingAfterDraws;
         this.startingPlayer = startingPlayer;
     }
 //TODO: Change this shit so it allows for several bets to be placed, including forcing match. Maybe once everyone's

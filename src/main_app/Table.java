@@ -18,12 +18,15 @@ public class Table {
         this.round = new DrawingRound(players, deck);
         round.start(players, deck);
         int startingPlayer = round.getStartingPlayer();
+        Player[] stillPlayingAfterRound = round.getStillPlaying();
         System.out.println("\tEND OF DRAWING ROUND\n\n***************************************************\n\n\tSTART OF BETTING ROUND");
-        this.round = new BettingRound(players, deck, startingPlayer);
+
+        this.round = new BettingRound(players, deck, stillPlayingAfterBets, startingPlayer);
         int pot = round.start(players, deck);//WE'RE NOT RETURNING THE LIST OF REMAINING PLAYERS...
-        Player[] stillPlayingAfterBets = round.getStillPlaying();
+        stillPlayingAfterRound = round.getStillPlaying();
         System.out.println("\tEND OF DRAWING ROUND\n\n***************************************************\n\n\tSTART OF SHOWDOWN");
-        this.round = new FinalRound(players, deck, stillPlayingAfterBets, startingPlayer);
+
+        this.round = new FinalRound(players, deck, stillPlayingAfterRound, startingPlayer);
         int winner = round.start(players, deck);
         if (winner != -1) {
             System.out.println("Winner of the round is: " + players[winner].getName());
