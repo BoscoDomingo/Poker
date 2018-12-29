@@ -11,9 +11,9 @@ public class DrawingRound extends Round {
         Random r = new Random();
         this.startingPlayer = r.nextInt(players.length);
         this.currentPlayer = startingPlayer;
-        this.stillPlaying = new Player[players.length];
+        this.stillPlaying = new boolean[players.length];
         for (int i = 0; i < players.length; i++) {
-            stillPlaying[i] = players[i];
+            stillPlaying[i] = true;
         }
     }
 
@@ -25,7 +25,7 @@ public class DrawingRound extends Round {
                 players[currentPlayer].drawFromDeck(deck.pickXCards(howManyCards));
                 keepPlaying = players[currentPlayer].askIfStillPlaying();
                 if (!keepPlaying) {
-                    this.stillPlaying[currentPlayer] = null;
+                    this.stillPlaying[currentPlayer] = false;
                 }
             }
             this.currentPlayer = (this.currentPlayer + 1) % players.length;
