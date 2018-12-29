@@ -14,19 +14,20 @@ public class Table {
         for (int i = 0; i < players.length; i++) {
             players[i].generateHand(deck);
         }
+
         System.out.println("\t***************************************************\n\n\tSTART OF DRAWING ROUND");
-        this.round = new DrawingRound(players, deck);
+        this.round = new DrawingRound(players);
         round.start(players, deck);
         int startingPlayer = round.getStartingPlayer();
         Player[] stillPlayingAfterRound = round.getStillPlaying();
         System.out.println("\tEND OF DRAWING ROUND\n\n***************************************************\n\n\tSTART OF BETTING ROUND");
 
-        this.round = new BettingRound(players, deck, stillPlayingAfterRound, startingPlayer);
+        this.round = new BettingRound(stillPlayingAfterRound, startingPlayer);
         int pot = round.start(players, deck);//WE'RE NOT RETURNING THE LIST OF REMAINING PLAYERS...
         stillPlayingAfterRound = round.getStillPlaying();
         System.out.println("\tEND OF DRAWING ROUND\n\n***************************************************\n\n\tSTART OF SHOWDOWN");
 
-        this.round = new FinalRound(players, deck, stillPlayingAfterRound, startingPlayer);
+        this.round = new FinalRound(stillPlayingAfterRound, startingPlayer);
         int winner = round.start(players, deck);
         if (winner != -1) {
             System.out.println("Winner of the round is: " + players[winner].getName());
@@ -39,20 +40,11 @@ public class Table {
         }
     }
 
-
     public Player[] getPlayers() {
         return players;
     }
 
     public void setPlayers(Player[] players) {
         this.players = players;
-    }
-
-    public Round getRound() {
-        return round;
-    }
-
-    public void setRound(Round round) {
-        this.round = round;
     }
 }
