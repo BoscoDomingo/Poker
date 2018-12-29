@@ -32,7 +32,9 @@ public class Deck {
         ArrayList<Card> picked = new ArrayList<>();
         Random r = new Random();
         for (int i = 1; i <= number; i++) {
-            picked.add(getCard(r.nextInt(deck.size()))); //deck size changes. Upper bound should reflect that
+            int position = r.nextInt(deck.size());
+            picked.add(getCard(position)); //deck size changes. Upper bound should reflect that
+            this.deck.remove(position);
         }
         return picked;
     }
@@ -44,14 +46,18 @@ public class Deck {
     }
 
     public Card getCard(int i) {
-        return deck.get(i);
+        Card card = deck.get(i);
+        this.deck.remove(card);
+        return card;
     }
 
+    public Card getTopCard() {
+        Card card = deck.get(deck.size() - 1);
+        this.deck.remove(card);
+        return card;
+    }
+/*
     //DELETE?
-   /* public Card getTopCard() {
-        return deck.get(deck.size() - 1);
-    }
-
     public void addCardsToDeck(ArrayList<Card> cardsToAdd) {
         for (Card card : cardsToAdd) {
             this.deck.add(card);

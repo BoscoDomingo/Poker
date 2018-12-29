@@ -22,7 +22,11 @@ public class Player {
     }
 
     public void generateHand(Deck deck) {
-        this.hand.setCards(deck.pickXCards(5));
+        ArrayList<Card> cardsToFormHand = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            cardsToFormHand.add(deck.getTopCard());
+        }
+        this.hand.setCards(cardsToFormHand);
         this.hand.bubbleSort();
     }
 
@@ -97,7 +101,7 @@ public class Player {
                 chosenCards.clear();
             } else done = true;
         }
-        if (chosenCards.size() == 0){
+        if (chosenCards.size() == 0) {
             return null;
         }
         return chosenCards;

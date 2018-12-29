@@ -6,12 +6,20 @@ import main_app.Player;
 public class BettingRound extends Round {
     private int pot;
     private int minimumBet;
+    private int fullCircles;
+    private int[] startingBalances;
 
     public BettingRound(Player[] stillPlayingAfterDraws, int startingPlayer) {
         this.pot = 0;
         this.minimumBet = 100;
+        this.fullCircles = 0;
         this.stillPlaying = stillPlayingAfterDraws;
         this.startingPlayer = startingPlayer;
+        this.startingBalances = new int[stillPlayingAfterDraws.length];
+    }
+
+    private boolean allMatched(int minimumBet, Player[] players) {
+        
     }
 
     //TODO: Change this shit so it allows for several bets to be placed, including forcing match. Maybe once everyone's
@@ -19,7 +27,9 @@ public class BettingRound extends Round {
     //or if they went all in (in case they can't match the highest bet they have no other option)
     @Override
     public int start(Player[] players, Deck deck) {
-        //use this.currentPlayer and this.startingPlayer
+        for (int i = 0; i < players.length; i++) {
+            startingBalances[i] = players[i].getBalance();
+        }
         do {
             if (stillPlaying[currentPlayer] != null) {
                 int[] action = players[currentPlayer].bettingAction(minimumBet);
@@ -39,7 +49,10 @@ public class BettingRound extends Round {
                 }
             }
             this.currentPlayer = (this.currentPlayer + 1) % players.length;
-        } while (!isRoundDone());
+            if (isRoundDone()) {
+                fullCircles++;
+            }
+        } while (!isRoundDone() && allMatched() || fullCircles == 3);
         return this.pot;
     }
 }
