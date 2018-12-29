@@ -9,7 +9,7 @@ public abstract class Round {
 
     protected int currentPlayer;
     protected int startingPlayer;
-    protected Player[] stillPlaying;
+    protected boolean[] stillPlaying;
 
     protected boolean isRoundDone() {
         return this.currentPlayer == this.startingPlayer;
@@ -17,7 +17,7 @@ public abstract class Round {
 
     public abstract int start(Player[] players, Deck deck);
 
-    public Player[] getStillPlaying() {
+    public boolean[] getStillPlaying() {
         return stillPlaying;
     }
 

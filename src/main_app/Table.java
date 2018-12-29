@@ -19,7 +19,7 @@ public class Table {
         this.round = new DrawingRound(players);
         round.start(players, deck);
         int startingPlayer = round.getStartingPlayer();
-        Player[] stillPlayingAfterRound = round.getStillPlaying();
+        boolean[] stillPlayingAfterRound = round.getStillPlaying();
         System.out.println("\tEND OF DRAWING ROUND\n\n***************************************************\n\n\tSTART OF BETTING ROUND");
 
         this.round = new BettingRound(stillPlayingAfterRound, startingPlayer);

@@ -8,9 +8,10 @@ import java.util.ArrayList;
 
 public class FinalRound extends Round {
 
-    public FinalRound(Player[] stillPlayingAfterBets, int startingPlayer) {
+    public FinalRound(boolean[] stillPlayingAfterBets, int startingPlayer) {
         this.stillPlaying = stillPlayingAfterBets;
         this.startingPlayer = startingPlayer;
+        this.currentPlayer = startingPlayer;
     }
 
     @Override
@@ -25,7 +26,7 @@ public class FinalRound extends Round {
         ArrayList<Player> bestPlayers = new ArrayList<>();
 
         do {
-            if (stillPlaying[currentPlayer] != null) {
+            if (stillPlaying[currentPlayer]) {
                 combination = Combinations.checkCombinations(players[currentPlayer].getHand().getCards());
                 if (combination > bestCombination) {
                     bestPlayers.clear();
