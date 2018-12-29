@@ -3,7 +3,9 @@ package main_app;
 import java.util.ArrayList;
 
 public class Hand {
-    ArrayList<Card> cards;//should've been an array to ensure there's 5 cards at all times, but can be done through careful coding
+    ArrayList<Card> cards;/*should've been an array to ensure there's 5 cards at all times,
+    but can be achieved through careful coding. Was left an ArrayList
+    for scalability purposes too (eg implementing different game modes)*/
 
     public Hand(ArrayList<Card> cards) {
         this.cards = cards;

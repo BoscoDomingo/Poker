@@ -10,21 +10,29 @@ public class Table {
     private Round round;
 
     public void startRound(Deck deck) {
+        deck.shuffle();
+        for (int i = 0; i < players.length; i++) {
+            players[i].generateHand(deck);
+        }
+        System.out.println("\t***************************************************\n\n\tSTART OF DRAWING ROUND");
         this.round = new DrawingRound(players, deck);
         round.start(players, deck);
+        int startingPlayer = round.getStartingPlayer();
         System.out.println("\tEND OF DRAWING ROUND\n\n***************************************************\n\n\tSTART OF BETTING ROUND");
-        this.round = new BettingRound(players, deck);
-        int pot = round.start(players, deck);
+        this.round = new BettingRound(players, deck, startingPlayer);
+        int pot = round.start(players, deck);//WE'RE NOT RETURNING THE LIST OF REMAINING PLAYERS...
+        Player[] stillPlayingAfterBets = round.getStillPlaying();
         System.out.println("\tEND OF DRAWING ROUND\n\n***************************************************\n\n\tSTART OF SHOWDOWN");
-        this.round = new FinalRound(players, deck);
+        this.round = new FinalRound(players, deck, stillPlayingAfterBets, startingPlayer);
         int winner = round.start(players, deck);
-        if(winner!=-1) {
+        if (winner != -1) {
             System.out.println("Winner of the round is: " + players[winner].getName());
             players[winner].setBalance(players[winner].getBalance() + pot);
-        }else {
+        } else {
             System.out.println("Draw!");
-            players[0].setBalance(players[0].getBalance()+pot/2);
-            players[1].setBalance(players[1].getBalance()+pot/2);
+            for (int i = 0; i < players.length; i++) {
+                players[i].setBalance(players[i].getBalance() + pot / players.length);
+            }
         }
     }
 

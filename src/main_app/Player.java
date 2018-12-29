@@ -16,8 +16,13 @@ public class Player {
         this.name = name;
     }
 
+    //General
     public boolean isBroke() {
         return balance <= 0;
+    }
+
+    public void generateHand(Deck deck){
+        this.hand.setCards(deck.pickXCards(5));
     }
 
     //Drawing Round
@@ -221,10 +226,6 @@ public class Player {
         this.hand = hand;
     }
 
-    public int getId() {
-        return id;
-    }
-
     public int getBalance() {
         return balance;
     }
@@ -235,5 +236,9 @@ public class Player {
 
     public String getName() {
         return name;
+    }
+
+    public int getId() {
+        return id;
     }
 }

@@ -1,10 +1,12 @@
 package main_app.rounds;
 
-import main_app.*;
-import java.util.ArrayList;
+import main_app.Deck;
+import main_app.Player;
+
 import java.util.Random;
 
 public abstract class Round {
+
     protected int currentPlayer;
     protected int startingPlayer;
     protected Player[] stillPlaying;
@@ -24,4 +26,12 @@ public abstract class Round {
     }
 
     public abstract int start(Player[] players, Deck deck);
+
+    public Player[] getStillPlaying() {
+        return stillPlaying;
+    }
+
+    public int getStartingPlayer() {
+        return startingPlayer;
+    }
 }

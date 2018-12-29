@@ -6,6 +6,7 @@ public class Poker {
     public void startGame(Deck deck) {
         Player[] players = {new Player(0, 1000, "John Smith"), new Player(1, 1000, "Mary Rothschild")};
         this.table.setPlayers(players);
+        System.out.println("Welcome to Five-Card Draw Poker!");
 
         while (gameOver() != -1) {
             table.startRound(deck);

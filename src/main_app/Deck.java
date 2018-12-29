@@ -32,30 +32,37 @@ public class Deck {
         ArrayList<Card> picked = new ArrayList<>();
         Random r = new Random();
         for (int i = 1; i <= number; i++) {
-            picked.add(getCard(r.nextInt(deck.size()))); //el mazo varía de tamaño a lo largo de la partida
+            picked.add(getCard(r.nextInt(deck.size()))); //deck size changes. Upper bound should reflect that
         }
         return picked;
     }
 
-    public void addCards(ArrayList<Card> cardsToAdd) {
-        for (Card card : cardsToAdd) {
-            this.deck.add(card);
+    public void returnCardsToDeck(ArrayList<Card> cardsToBeReturned) {
+        for (Card card : cardsToBeReturned) {
+            this.deck.add(0, card);
         }
-    }
-
-    public ArrayList<Card> getDeck() {
-        return deck;
     }
 
     public Card getCard(int i) {
         return deck.get(i);
     }
 
-    public int getIndex(Card card) {
-        return deck.indexOf(card);
+    //DELETE?
+   /* public Card getTopCard() {
+        return deck.get(deck.size() - 1);
     }
 
-    public void addCard(Card card) {
-        this.deck.add(card);
+    public void addCardsToDeck(ArrayList<Card> cardsToAdd) {
+        for (Card card : cardsToAdd) {
+            this.deck.add(card);
+        }
+    }*/
+
+    public ArrayList<Card> getDeck() {
+        return deck;
+    }
+
+    public int getIndex(Card card) {
+        return deck.indexOf(card);
     }
 }
