@@ -21,8 +21,9 @@ public class Player {
         return balance <= 0;
     }
 
-    public void generateHand(Deck deck){
+    public void generateHand(Deck deck) {
         this.hand.setCards(deck.pickXCards(5));
+        this.hand.bubbleSort();
     }
 
     //Drawing Round
@@ -65,6 +66,7 @@ public class Player {
             for (Card added : cardsFromDeck) {
                 this.hand.getCards().add(added);
             }
+            this.hand.bubbleSort();
             return cardsToReturnToDeck;
         } else {
             return cardsFromDeck;
@@ -94,6 +96,9 @@ public class Player {
             if (!confirmDiscard()) {
                 chosenCards.clear();
             } else done = true;
+        }
+        if (chosenCards.size() == 0){
+            return null;
         }
         return chosenCards;
     }
