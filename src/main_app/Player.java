@@ -21,7 +21,7 @@ public class Player {
         return balance <= 0;
     }
 
-    public void generateHand(Deck deck) {
+    public void generateHand(Deck deck) {//not in constructor because players may withdraw or not play certain rounds
         ArrayList<Card> cardsToFormHand = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             cardsToFormHand.add(deck.getTopCard());

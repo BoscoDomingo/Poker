@@ -7,7 +7,7 @@ import main_app.rounds.Round;
 
 public class Table {
     private Player[] players = new Player[2];
-    private Round round;
+    private Round round; //rel de asociacion
 
     public void startRound(Deck deck) {
         deck.shuffle();

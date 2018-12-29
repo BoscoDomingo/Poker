@@ -8,10 +8,11 @@ import java.util.Random;
 public class DrawingRound extends Round {
 
     public DrawingRound(Player[] players) {
-        Random r = new Random();
+        Random r = new Random();//rel. de uso
         this.startingPlayer = r.nextInt(players.length);
         this.currentPlayer = startingPlayer;
         this.stillPlaying = new boolean[players.length];
+
         for (int i = 0; i < players.length; i++) {
             stillPlaying[i] = true;
         }
