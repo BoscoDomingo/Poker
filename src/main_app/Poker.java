@@ -15,7 +15,7 @@ public class Poker {
         System.out.println("Congratulations " + table.getPlayers()[gameOver()].getName() + " for winning! Thanks for playing!\nPress any button to exit");
     }
 
-    private int gameOver() {
+    private int gameOver() { //this would have to change for a 3+ player game
         int winner = -1;
         if (table.getPlayers()[0].isBroke()) {
             winner = 1;

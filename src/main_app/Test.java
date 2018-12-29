@@ -1,6 +1,7 @@
 package main_app;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Test {
     private static int raiseBet(int minimumBet) {
@@ -24,7 +25,6 @@ public class Test {
     }
 
     public static void main(String[] args) {
-<<<<<<< HEAD
        Hand mano = new Hand();
        ArrayList<Card> cartas = new ArrayList<>();
        cartas.add(new Card(5,'H'));
@@ -34,7 +34,7 @@ public class Test {
        cartas.add(new Card(5,'H'));
         //System.out.println(Combinations.checkCombinations(cartas));
        mano.setCards(cartas);
-=======
+
         /*Card[] hand = {new Card(10, 'H'), new Card(1, 'S'), new Card(11, 'C'), new Card(12, 'S'), new Card(13, 'D')};
         System.out.println(Combinations.checkCombinations(hand));
         Card[] hand2 = {new Card(5, 'H'), new Card(1, 'H'), new Card(11, 'H'), new Card(12, 'H'), new Card(13, 'H')};
@@ -101,9 +101,6 @@ public class Test {
         for (int i = 0; i < 11; i++) {
             System.out.println((r.nextInt(2)));
         }*/
-<<<<<<< HEAD
-        // App.run();
-=======
->>>>>>> startGame
+
     }
 }
