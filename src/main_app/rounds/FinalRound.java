@@ -7,13 +7,8 @@ import main_app.Player;
 import java.util.ArrayList;
 
 public class FinalRound extends Round {
-    private int highestCombination;
-    private ArrayList<Integer> playersWithHighestCombination;
 
-    public FinalRound(Player[] players, Deck deck, Player[] stillPlayingAfterBets, int startingPlayer) {
-        super(players, deck);
-        this.highestCombination = 0;
-        this.playersWithHighestCombination = new ArrayList<>();
+    public FinalRound(Player[] stillPlayingAfterBets, int startingPlayer) {
         this.stillPlaying = stillPlayingAfterBets;
         this.startingPlayer = startingPlayer;
     }
@@ -29,7 +24,7 @@ public class FinalRound extends Round {
         int bestPlayer = -1;
         ArrayList<Player> bestPlayers = new ArrayList<>();
 
-        while (!isRoundDone()) {
+        do {
             if (stillPlaying[currentPlayer] != null) {
                 combination = Combinations.checkCombinations(players[currentPlayer].getHand().getCards());
                 if (combination > bestCombination) {
@@ -41,7 +36,8 @@ public class FinalRound extends Round {
                 }
             }
             this.currentPlayer = (this.currentPlayer + 1) % players.length;
-        }
+        } while (!isRoundDone());
+
         if (bestCombination == 1) {
             tiebreaker(players, bestPlayers);
         }

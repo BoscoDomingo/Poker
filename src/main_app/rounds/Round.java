@@ -11,16 +11,6 @@ public abstract class Round {
     protected int startingPlayer;
     protected Player[] stillPlaying;
 
-    public Round(Player[] players, Deck deck) {
-        Random r = new Random();
-        this.startingPlayer = r.nextInt(players.length);
-        this.currentPlayer = startingPlayer;
-        this.stillPlaying = new Player[players.length];
-        for (int i = 0; i < players.length; i++) {
-            stillPlaying[i] = players[i];
-        }
-    }
-
     protected boolean isRoundDone() {
         return this.currentPlayer == this.startingPlayer;
     }

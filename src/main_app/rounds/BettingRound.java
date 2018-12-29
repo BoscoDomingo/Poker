@@ -7,8 +7,7 @@ public class BettingRound extends Round {
     private int pot;
     private int minimumBet;
 
-    public BettingRound(Player[] players, Deck deck, Player[] stillPlayingAfterDraws, int startingPlayer) {
-        super(players, deck);
+    public BettingRound(Player[] stillPlayingAfterDraws, int startingPlayer) {
         this.pot = 0;
         this.minimumBet = 100;
         this.stillPlaying = stillPlayingAfterDraws;
@@ -21,7 +20,7 @@ public class BettingRound extends Round {
     @Override
     public int start(Player[] players, Deck deck) {
         //use this.currentPlayer and this.startingPlayer
-        while (!isRoundDone()) {
+        do {
             if (stillPlaying[currentPlayer] != null) {
                 int[] action = players[currentPlayer].bettingAction(minimumBet);
                 switch (action[0]) {
@@ -40,7 +39,7 @@ public class BettingRound extends Round {
                 }
             }
             this.currentPlayer = (this.currentPlayer + 1) % players.length;
-        }
+        } while (!isRoundDone());
         return this.pot;
     }
 }
