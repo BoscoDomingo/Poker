@@ -21,7 +21,7 @@ public class Table {
         Player[] stillPlayingAfterRound = round.getStillPlaying();
         System.out.println("\tEND OF DRAWING ROUND\n\n***************************************************\n\n\tSTART OF BETTING ROUND");
 
-        this.round = new BettingRound(players, deck, stillPlayingAfterBets, startingPlayer);
+        this.round = new BettingRound(players, deck, stillPlayingAfterRound, startingPlayer);
         int pot = round.start(players, deck);//WE'RE NOT RETURNING THE LIST OF REMAINING PLAYERS...
         stillPlayingAfterRound = round.getStillPlaying();
         System.out.println("\tEND OF DRAWING ROUND\n\n***************************************************\n\n\tSTART OF SHOWDOWN");

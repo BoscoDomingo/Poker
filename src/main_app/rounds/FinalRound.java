@@ -25,30 +25,35 @@ public class FinalRound extends Round {
 
 
     private int checkBestPlayer(Player[] players) {
-        int bestCombination = 0, combination = 0;
+        int bestCombination = 0, combination;
         int bestPlayer = -1;
         ArrayList<Player> bestPlayers = new ArrayList<>();
 
-        for (int i = 0; i < players.length; i++) {
-            combination = Combinations.checkCombinations(players[i].getHand().getCards());
-            if (combination > bestCombination) {
-                bestPlayers.clear();
-                bestPlayers.add(players[i]);
-                bestCombination = combination;
-            } else if (combination == bestCombination) {
-                bestPlayers.add(players[i]);
+        while (!isRoundDone()) {
+            if (stillPlaying[currentPlayer] != null) {
+                combination = Combinations.checkCombinations(players[currentPlayer].getHand().getCards());
+                if (combination > bestCombination) {
+                    bestPlayers.clear();
+                    bestPlayers.add(players[currentPlayer]);
+                    bestCombination = combination;
+                } else if (combination == bestCombination) {
+                    bestPlayers.add(players[currentPlayer]);
+                }
             }
+            this.currentPlayer = (this.currentPlayer + 1) % players.length;
         }
         if (bestCombination == 1) {
             tiebreaker(players, bestPlayers);
         }
-        if (bestPlayers.size() == 1)
+        if (bestPlayers.size() == 1) {
             bestPlayer = bestPlayers.get(0).getId();
+        }
         return bestPlayer;
     }
 
     private void tiebreaker(Player[] players, ArrayList<Player> bestPlayers) {
         int highestCard = players[0].getHand().getCards().get(4).getNumber();
+        bestPlayers.clear();
         bestPlayers.add(players[0]);
         for (int i = 1; i < players.length; i++) {
             int currentHigh = players[i].getHand().getCards().get(4).getNumber();
