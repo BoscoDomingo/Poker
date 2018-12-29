@@ -49,23 +49,9 @@ public class FinalRound extends Round {
     }
 
     private void tiebreaker(Player[] players, ArrayList<Player> bestPlayers) {
-        int highestCard = players[0].getHand().getCards().get(4).getNumber();
-        bestPlayers.clear();
-        bestPlayers.add(players[0]);
-        for (int i = 1; i < players.length; i++) {
-            int currentHigh = players[i].getHand().getCards().get(4).getNumber();
-            if (currentHigh > highestCard) {
-                bestPlayers.clear();
-                bestPlayers.add(players[i]);
-                highestCard = currentHigh;
-            } else if (currentHigh == highestCard) {
-                bestPlayers.add(players[i]);
-            }
-        }
-    }
-       /* int highestCard = 0;
-        for (int j = 0; j < players.length; j++) {//Y el caso de highestCard == 1, players[j].getHand().getCards().get(0).getNumber() != 1 y players[j].getHand().getCards().get(4).getNumber() != highestCard?
-            if (players[j].getHand().getCards().get(0).getNumber() == 1) { //esto no tendría que ser get(4)?
+        int highestCard = 0;
+        for (int j = 0; j < players.length; j++) {
+            if (players[j].getHand().getCards().get(0).getNumber() == 1) {
                 if (highestCard == 1) {
                     bestPlayers.add(players[j]);
                 } else {
@@ -80,6 +66,6 @@ public class FinalRound extends Round {
             } else if (players[j].getHand().getCards().get(4).getNumber() == highestCard) {
                 bestPlayers.add(players[j]);
             }
-        }*/
-
+        }
+    }
 }

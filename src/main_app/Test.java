@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Test {
-    private static int raiseBet(int minimumBet) {
+   /* private static int raiseBet(int minimumBet) {
         int balance = 1000;
         System.out.println("How much do you want to bet?");
         Scanner scan = new Scanner(System.in);
@@ -24,7 +24,7 @@ public class Test {
         return number;
     }
 
-    public static void main(String[] args) {
+    public static void(String[] args) {
        Hand mano = new Hand();
        ArrayList<Card> cartas = new ArrayList<>();
        cartas.add(new Card(5,'H'));
@@ -100,7 +100,7 @@ public class Test {
         Random r = new Random();
         for (int i = 0; i < 11; i++) {
             System.out.println((r.nextInt(2)));
-        }*/
+        }
 
-    }
+    }*/
 }

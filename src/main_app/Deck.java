@@ -7,6 +7,7 @@ public class Deck {
     private ArrayList<Card> deck;
 
     public void generateDeck() {
+        this.deck = new ArrayList<>();
         char suit;
         for (int i = 0; i < 52; i++) {
             if (i / 13 == 0) suit = 'S';
@@ -22,8 +23,8 @@ public class Deck {
         for (int i = this.deck.size() - 1; i > 0; i--) {
             int index = rnd.nextInt(i + 1);
             // Simple swap
-            Card a = this.getCard(index);
-            this.deck.set(index, this.getCard(i));
+            Card a = this.selectCard(index);
+            this.deck.set(index, this.selectCard(i));
             this.deck.set(i, a);
         }
     }
@@ -46,23 +47,25 @@ public class Deck {
     }
 
     public Card getCard(int i) {
-        Card card = deck.get(i);
-        this.deck.remove(card);
-        return card;
+        if(i<deck.size()) {
+            Card card = deck.get(i);
+            this.deck.remove(card);
+            return card;
+        } else return null;
+    }
+
+    public Card selectCard(int i) {
+        if(i<deck.size()) {
+            Card card = deck.get(i);
+            return card;
+        } else return null;
     }
 
     public Card getTopCard() {
         Card card = deck.get(deck.size() - 1);
-        this.deck.remove(card);
+        this.deck.remove(deck.size()-1);
         return card;
     }
-/*
-    //DELETE?
-    public void addCardsToDeck(ArrayList<Card> cardsToAdd) {
-        for (Card card : cardsToAdd) {
-            this.deck.add(card);
-        }
-    }*/
 
     public ArrayList<Card> getDeck() {
         return deck;

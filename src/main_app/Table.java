@@ -15,7 +15,7 @@ public class Table {
             players[i].generateHand(deck);
         }
 
-        System.out.println("\t***************************************************\n\n\tSTART OF DRAWING ROUND");
+        System.out.println("***************************************************\n\tSTART OF DRAWING ROUND\n");
         this.round = new DrawingRound(players);
         round.start(players, deck);
         int startingPlayer = round.getStartingPlayer();

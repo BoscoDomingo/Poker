@@ -19,6 +19,8 @@ public class DrawingRound extends Round {
 
     public int start(Player[] players, Deck deck) {
         do {
+            System.out.println("Player: " + players[currentPlayer].getName());
+            players[currentPlayer].getHand().printHand();
             int howManyCards = players[currentPlayer].askForXCards();
             boolean keepPlaying = true;
             if (howManyCards != 0) {
