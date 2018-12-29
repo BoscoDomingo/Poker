@@ -29,6 +29,7 @@ public class BettingRound extends Round {
             wasRaised = false;
             do {
                 if (stillPlaying[currentPlayer]) {
+                    System.out.println("Current pot is: " + this.pot);
                     int[] action = players[currentPlayer].bettingAction(minimumBet);
                     switch (action[0]) {
                         case 0:

@@ -23,8 +23,10 @@ public class Player {
 
     public void generateHand(Deck deck) {//not in constructor because players may withdraw or not play certain rounds
         ArrayList<Card> cardsToFormHand = new ArrayList<>();
+        Card aux = null;
         for (int i = 0; i < 5; i++) {
-            cardsToFormHand.add(deck.getTopCard());
+            aux = deck.getTopCard();
+            cardsToFormHand.add(aux);
         }
         this.hand.setCards(cardsToFormHand);
         this.hand.bubbleSort();
@@ -181,7 +183,7 @@ public class Player {
 
     //Betting Round
     public int[] bettingAction(int minimumBet) {
-        System.out.println("Choose your next action: \n\t0-Bet the minimum possible amount (" + minimumBet + ")\n\t1-Raise the bet\n\t2-Go All-In\n\t3-Withdraw this round");
+        System.out.println(this.name + ": Choose your next action: \n\t0-Bet the minimum possible amount (" + minimumBet + ")\n\t1-Raise the bet\n\t2-Go All-In\n\t3-Withdraw this round");
         Scanner scan = new Scanner(System.in);
         while (!scan.hasNextInt()) {
             System.out.println("Please enter a number");

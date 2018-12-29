@@ -11,8 +11,7 @@ public class Poker {
         while (gameOver() == -1) {
             table.startRound(deck);
         }
-
-      //  System.out.println("Congratulations " + table.getPlayers()[gameOver()].getName() + " for winning! Thanks for playing!\nPress any button to exit");
+        System.out.println("\n-=Congratulations " + table.getPlayers()[gameOver()].getName() + " for winning! Thanks for playing!=-\n\nPress any button to exit");
     }
 
     private int gameOver() { //this would have to change for a 3+ player game

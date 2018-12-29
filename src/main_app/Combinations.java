@@ -19,6 +19,41 @@ public class Combinations {
         return combination;
     }
 
+    public static void printCombination(int combination){
+        switch(combination){
+            case(2):
+                System.out.println("Pair");
+                break;
+            case(3):
+                System.out.println("Two Pairs");
+                break;
+            case(4):
+                System.out.println("Three Of A Kind");
+                break;
+            case(5):
+                System.out.println("Straight");
+                break;
+            case(6):
+                System.out.println("Flush");
+                break;
+            case(7):
+                System.out.println("Full House");
+                break;
+            case(8):
+                System.out.println("Four Of A Kind");
+                break;
+            case(9):
+                System.out.println("Straight Flush");
+                break;
+            case(10):
+                System.out.println("Royal Flush");
+                break;
+            default:
+                System.out.println("High Card");
+                break;
+        }
+    }
+
     private static boolean checkPair(ArrayList<Card> hand) {
         boolean found = false;
         for (int i = 0; i < hand.size() - 1; i++) {

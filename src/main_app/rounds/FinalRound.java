@@ -28,6 +28,10 @@ public class FinalRound extends Round {
         do {
             if (stillPlaying[currentPlayer]) {
                 combination = Combinations.checkCombinations(players[currentPlayer].getHand().getCards());
+                System.out.print(players[currentPlayer].getName() + ". ");
+                players[currentPlayer].getHand().printHand();
+                System.out.print("You best Combination is: ");
+                Combinations.printCombination(combination);
                 if (combination > bestCombination) {
                     bestPlayers.clear();
                     bestPlayers.add(players[currentPlayer]);

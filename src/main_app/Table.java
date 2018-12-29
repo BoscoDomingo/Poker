@@ -26,7 +26,6 @@ public class Table {
         int pot = round.start(players, deck);//WE'RE NOT RETURNING THE LIST OF REMAINING PLAYERS...
         stillPlayingAfterRound = round.getStillPlaying();
         System.out.println("\tEND OF DRAWING ROUND\n\n***************************************************\n\n\tSTART OF SHOWDOWN");
-
         this.round = new FinalRound(stillPlayingAfterRound, startingPlayer);
         int winner = round.start(players, deck);
         if (winner != -1) {
@@ -38,6 +37,7 @@ public class Table {
                 players[i].setBalance(players[i].getBalance() + pot / players.length);
             }
         }
+        returnHandsToDeck(deck);
     }
 
     public Player[] getPlayers() {
@@ -46,5 +46,12 @@ public class Table {
 
     public void setPlayers(Player[] players) {
         this.players = players;
+    }
+
+    private void returnHandsToDeck(Deck deck){
+        for(int i=0;i<this.players.length;i++){
+            deck.returnCardsToDeck(players[i].getHand().getCards());
+
+        }
     }
 }
