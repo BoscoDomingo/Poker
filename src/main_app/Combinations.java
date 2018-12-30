@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Combinations {
 
-    public static int checkCombinations(ArrayList<Card> hand) {
-        ArrayList<Card> aux = new ArrayList<Card>(hand);
+    public static int checkCombinations(Hand hand) {
+        ArrayList<Card> aux = new ArrayList<Card>(hand.getCards());
         int combination = 1;
         if (checkRoyalFlush(aux)) combination = 10;
         else if (checkStraightFlush(aux)) combination = 9;

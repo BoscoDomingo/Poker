@@ -6,8 +6,12 @@ import main_app.rounds.FinalRound;
 import main_app.rounds.Round;
 
 public class Table {
-    private Player[] players = new Player[2];
+    private Player[] players;
     private Round round; //rel de asociacion
+
+    public Table(Player[] players) {
+        this.players = players;
+    }
 
     public void startRound(Deck deck) {
         deck.shuffle();

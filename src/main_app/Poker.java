@@ -1,12 +1,14 @@
 package main_app;
 
 public class Poker {
-    private Table table;
+    Table table;
+
+    public Poker() {
+    }
 
     public void startGame(Deck deck) {
         Player[] players = {new Player(0, 1000, "John Smith"), new Player(1, 1000, "Mary Rothschild")};
-        table = new Table();
-        this.table.setPlayers(players);
+        this.table = new Table(players);
 
         while (gameOver() == -1) {
             table.startRound(deck);

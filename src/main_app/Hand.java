@@ -20,7 +20,7 @@ public class Hand {
         for (Card c : cards) {
             if (cards.indexOf(c) != cards.size() - 1)
                 System.out.print(c.getNumber() + "" + c.getSuit() + ", ");
-            else System.out.println(c.getNumber() + "" + c.getSuit());
+            else System.out.println(c.getNumber() + "" + c.getSuit() + "\n");
         }
     }
 

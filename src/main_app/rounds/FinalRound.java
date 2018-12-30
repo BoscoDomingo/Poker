@@ -27,7 +27,7 @@ public class FinalRound extends Round {
 
         do {
             if (stillPlaying[currentPlayer]) {
-                combination = Combinations.checkCombinations(players[currentPlayer].getHand().getCards());
+                combination = Combinations.checkCombinations(players[currentPlayer].getHand());
                 System.out.print(players[currentPlayer].getName() + ". ");
                 players[currentPlayer].getHand().printHand();
                 System.out.print("You best Combination is: ");

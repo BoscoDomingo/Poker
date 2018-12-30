@@ -23,7 +23,6 @@ public class DrawingRound extends Round {
             System.out.println("Player: " + players[currentPlayer].getName() + ". Balance: " + players[currentPlayer].getBalance());
             players[currentPlayer].getHand().printHand();
             int howManyCards = players[currentPlayer].askForXCards();
-            boolean keepPlaying = true;
             if (howManyCards != 0) {
                 players[currentPlayer].drawFromDeck(deck.pickXCards(howManyCards));
                 players[currentPlayer].getHand().printHand();

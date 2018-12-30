@@ -6,8 +6,11 @@ import java.util.Random;
 public class Deck {
     private ArrayList<Card> deck;
 
-    public void generateDeck() {
+    public Deck() {
         this.deck = new ArrayList<>();
+    }
+
+    public void generateDeck() {
         char suit;
         for (int i = 0; i < 52; i++) {
             if (i / 13 == 0) suit = 'S';
@@ -37,6 +40,7 @@ public class Deck {
             picked.add(getCard(position)); //deck size changes. Upper bound should reflect that
             this.deck.remove(position);
         }
+
         return picked;
     }
 
@@ -47,7 +51,7 @@ public class Deck {
     }
 
     public Card getCard(int i) {
-        if(i<deck.size()) {
+        if (i < deck.size()) {
             Card card = deck.get(i);
             this.deck.remove(card);
             return card;
@@ -55,14 +59,14 @@ public class Deck {
     }
 
     public Card selectCard(int i) {
-        if(i<deck.size()) {
+        if (i < deck.size()) {
             return deck.get(i);
         } else return null;
     }
 
     public Card getTopCard() {
         Card card = deck.get(deck.size() - 1);
-        this.deck.remove(deck.size()-1);
+        this.deck.remove(deck.size() - 1);
         return card;
     }
 
