@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018. Bosco Domingo & Luis de Marcos
+ */
+
 package main_app;
 
 import java.util.ArrayList;
@@ -10,7 +14,6 @@ public class Player {
     private String name;
 
     public Player(int id, int balance, String name) {
-        this.hand = new Hand();
         this.id = id;
         this.balance = balance;
         this.name = name;
@@ -28,7 +31,7 @@ public class Player {
             aux = deck.getTopCard();
             cardsToFormHand.add(aux);
         }
-        this.hand.setCards(cardsToFormHand);
+        this.hand = new Hand(cardsToFormHand);
         this.hand.bubbleSort();
     }
 
@@ -52,7 +55,7 @@ public class Player {
         return number;
     }
 
-    public boolean askIfStillPlaying() {
+   /* public boolean askIfStillPlaying() {
         System.out.println("Do you want to keep playing this turn? (Y/N)");
         Scanner scan = new Scanner(System.in);
         String selector = scan.nextLine();
@@ -61,7 +64,7 @@ public class Player {
             selector = scan.nextLine();
         }
         return (selector.equalsIgnoreCase("y") || selector.equalsIgnoreCase("yes"));
-    }
+    }*/
 
     public ArrayList<Card> drawFromDeck(ArrayList<Card> cardsFromDeck) {
         ArrayList<Card> cardsToReturnToDeck = selectCardsToDiscard(cardsFromDeck.size());
@@ -80,17 +83,18 @@ public class Player {
     }
 
     private ArrayList<Card> selectCardsToDiscard(int numberOfCardsToDiscard) {
-        ArrayList<Card> chosenCards = new ArrayList<Card>();
+        ArrayList<Card> chosenCards = new ArrayList<>();
         printDiscardWelcome(numberOfCardsToDiscard);
         Scanner scan = new Scanner(System.in);
         boolean done = false;
         while (!done) {
 
-            if (!scan.hasNextInt()) {
+            while (!scan.hasNextInt()) {
                 if (cancelDiscard()) {
                     return null;
                 } else {
-                    System.out.println("Please, choose the " + numberOfCardsToDiscard + " cards you want to discard");
+                    System.out.println("Please, choose the " + numberOfCardsToDiscard + " card(s) you want to discard");
+                    scan.reset();
                     scan.next();
                 }
             }
@@ -143,7 +147,7 @@ public class Player {
     private void prepareDiscard(ArrayList<Card> chosenCards, Scanner scan, int numberOfCardsToDiscard) {
         boolean done = false;
         while (!done) {
-            while (scan.hasNextInt()) {
+            do {
                 int i = scan.nextInt() - 1;
                 if (i > this.hand.getCards().size() - 1) {
                     System.out.println(i + " is not a valid index. Must be between 1 and 5. Please try again.");
@@ -153,14 +157,15 @@ public class Player {
                 } else {
                     chosenCards.add(this.hand.getCards().get(i));
                 }
-            }
+            } while (scan.hasNextInt());
             if (chosenCards.size() != numberOfCardsToDiscard) {
                 if (chosenCards.size() > numberOfCardsToDiscard) {
                     System.out.println("You picked too many cards. Try again");
-                } else if (chosenCards.size() > 1 && chosenCards.size() < numberOfCardsToDiscard) {
+                } else if (chosenCards.size() < numberOfCardsToDiscard) {
                     System.out.println("You didn't pick enough cards. Try again");
                 }
                 chosenCards.clear();
+                //scan.reset();
             } else {
                 done = true;
             }

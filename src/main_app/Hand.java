@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018. Bosco Domingo & Luis de Marcos
+ */
+
 package main_app;
 
 import java.util.ArrayList;
@@ -20,18 +24,18 @@ public class Hand {
         for (Card c : cards) {
             if (cards.indexOf(c) != cards.size() - 1)
                 System.out.print(c.getNumber() + "" + c.getSuit() + ", ");
-            else System.out.println(c.getNumber() + "" + c.getSuit());
+            else System.out.println(c.getNumber() + "" + c.getSuit() + "\n");
         }
     }
 
     public void bubbleSort() {
-        int temp = 0;
+        Card temp;
         for (int i = 0; i < this.cards.size(); i++) {
             for (int j = 1; j < (this.cards.size() - i); j++) {
-                if (this.cards.get(j-1).getNumber() > this.cards.get(j).getNumber()) {
-                    temp = this.cards.get(j-1).getNumber();
-                    this.cards.get(j-1).setNumber(this.cards.get(j).getNumber());
-                    this.cards.get(j).setNumber(temp);
+                if (this.cards.get(j - 1).getNumber() > this.cards.get(j).getNumber()) {
+                    temp = this.cards.get(j - 1);
+                    this.cards.set(j - 1, this.cards.get(j));
+                    this.cards.set(j, temp);
                 }
             }
         }

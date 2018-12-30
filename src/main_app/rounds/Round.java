@@ -1,9 +1,11 @@
+/*
+ * Copyright (c) 2018. Bosco Domingo & Luis de Marcos
+ */
+
 package main_app.rounds;
 
 import main_app.Deck;
 import main_app.Player;
-
-import java.util.Random;
 
 public abstract class Round {
 

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018. Bosco Domingo & Luis de Marcos
+ */
+
 package main_app;
 
 import main_app.rounds.BettingRound;
@@ -6,8 +10,12 @@ import main_app.rounds.FinalRound;
 import main_app.rounds.Round;
 
 public class Table {
-    private Player[] players = new Player[2];
+    private Player[] players;
     private Round round; //rel de asociacion
+
+    public Table(Player[] players) {
+        this.players = players;
+    }
 
     public void startRound(Deck deck) {
         deck.shuffle();
@@ -48,8 +56,8 @@ public class Table {
         this.players = players;
     }
 
-    private void returnHandsToDeck(Deck deck){
-        for(int i=0;i<this.players.length;i++){
+    private void returnHandsToDeck(Deck deck) {
+        for (int i = 0; i < this.players.length; i++) {
             deck.returnCardsToDeck(players[i].getHand().getCards());
 
         }

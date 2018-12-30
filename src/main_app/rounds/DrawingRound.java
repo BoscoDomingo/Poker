@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018. Bosco Domingo & Luis de Marcos
+ */
+
 package main_app.rounds;
 
 import main_app.Deck;
@@ -23,14 +27,9 @@ public class DrawingRound extends Round {
             System.out.println("Player: " + players[currentPlayer].getName() + ". Balance: " + players[currentPlayer].getBalance());
             players[currentPlayer].getHand().printHand();
             int howManyCards = players[currentPlayer].askForXCards();
-            boolean keepPlaying = true;
             if (howManyCards != 0) {
                 players[currentPlayer].drawFromDeck(deck.pickXCards(howManyCards));
                 players[currentPlayer].getHand().printHand();
-              /*  keepPlaying = players[currentPlayer].askIfStillPlaying();
-                if (!keepPlaying) {
-                    this.stillPlaying[currentPlayer] = false;
-                }*/
             }
             this.currentPlayer = (this.currentPlayer + 1) % players.length;
         } while (!isRoundDone());
