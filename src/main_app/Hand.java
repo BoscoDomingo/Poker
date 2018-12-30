@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018. Bosco Domingo & Luis de Marcos
+ */
+
 package main_app;
 
 import java.util.ArrayList;
@@ -28,10 +32,10 @@ public class Hand {
         Card temp;
         for (int i = 0; i < this.cards.size(); i++) {
             for (int j = 1; j < (this.cards.size() - i); j++) {
-                if (this.cards.get(j-1).getNumber() > this.cards.get(j).getNumber()) {
-                    temp = this.cards.get(j-1);
-                    this.cards.set(j-1,this.cards.get(j));
-                    this.cards.set(j,temp);
+                if (this.cards.get(j - 1).getNumber() > this.cards.get(j).getNumber()) {
+                    temp = this.cards.get(j - 1);
+                    this.cards.set(j - 1, this.cards.get(j));
+                    this.cards.set(j, temp);
                 }
             }
         }

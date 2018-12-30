@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018. Bosco Domingo & Luis de Marcos
+ */
+
 package main_app;
 
 import java.util.ArrayList;
@@ -19,33 +23,33 @@ public class Combinations {
         return combination;
     }
 
-    public static void printCombination(int combination){
-        switch(combination){
-            case(2):
+    public static void printCombination(int combination) {
+        switch (combination) {
+            case (2):
                 System.out.println("Pair");
                 break;
-            case(3):
+            case (3):
                 System.out.println("Two Pairs");
                 break;
-            case(4):
+            case (4):
                 System.out.println("Three Of A Kind");
                 break;
-            case(5):
+            case (5):
                 System.out.println("Straight");
                 break;
-            case(6):
+            case (6):
                 System.out.println("Flush");
                 break;
-            case(7):
+            case (7):
                 System.out.println("Full House");
                 break;
-            case(8):
+            case (8):
                 System.out.println("Four Of A Kind");
                 break;
-            case(9):
+            case (9):
                 System.out.println("Straight Flush");
                 break;
-            case(10):
+            case (10):
                 System.out.println("Royal Flush");
                 break;
             default:
@@ -57,7 +61,7 @@ public class Combinations {
     private static boolean checkPair(ArrayList<Card> hand) {
         boolean found = false;
         for (int i = 0; i < hand.size() - 1; i++) {
-            if (hand.get(i).getNumber() == hand.get(i+1).getNumber()) found = true;
+            if (hand.get(i).getNumber() == hand.get(i + 1).getNumber()) found = true;
         }
         return found;
     }
@@ -65,7 +69,7 @@ public class Combinations {
     private static boolean checkTwoPairs(ArrayList<Card> hand) {
         int numFound = 0;
         for (int i = 0; i < hand.size() - 1; i++) {
-            if (hand.get(i).getNumber() == hand.get(i+1).getNumber()) numFound++;
+            if (hand.get(i).getNumber() == hand.get(i + 1).getNumber()) numFound++;
         }
         return numFound == 2;
     }
@@ -73,7 +77,7 @@ public class Combinations {
     private static boolean checkThreeOfAKind(ArrayList<Card> hand) {
         boolean found = false;
         for (int i = 0; i < hand.size() - 2; i++) {
-            if (hand.get(i).getNumber() == hand.get(i+1).getNumber() && hand.get(i).getNumber() == hand.get(i+2).getNumber())
+            if (hand.get(i).getNumber() == hand.get(i + 1).getNumber() && hand.get(i).getNumber() == hand.get(i + 2).getNumber())
                 found = true;
         }
         return found;
@@ -82,7 +86,7 @@ public class Combinations {
     private static boolean checkStraight(ArrayList<Card> hand) {
         int found = 0;
         for (int i = 0; i < hand.size() - 1; i++) {
-            if ((hand.get(i+1).getNumber() - hand.get(i).getNumber()) == 1 || (hand.get(i+1).getNumber() - hand.get(i).getNumber()) == 9)
+            if ((hand.get(i + 1).getNumber() - hand.get(i).getNumber()) == 1 || (hand.get(i + 1).getNumber() - hand.get(i).getNumber()) == 9)
                 found++;
         }
         return found == 4;
@@ -91,7 +95,7 @@ public class Combinations {
     private static boolean checkFlush(ArrayList<Card> hand) {
         boolean found = true;
         for (int i = 0; i < hand.size() - 1; i++) {
-            if (hand.get(i).getSuit() != hand.get(i+1).getSuit()) found = false;
+            if (hand.get(i).getSuit() != hand.get(i + 1).getSuit()) found = false;
         }
         return found;
     }
@@ -101,7 +105,8 @@ public class Combinations {
         if (hand.get(0).getNumber() == hand.get(1).getNumber() && hand.get(1).getNumber() == hand.get(2).getNumber()) {
             if (hand.get(3).getNumber() == hand.get(4).getNumber()) found = true;
         } else if (hand.get(0).getNumber() == hand.get(1).getNumber()) {
-            if (hand.get(2).getNumber() == hand.get(3).getNumber() && hand.get(3).getNumber() == hand.get(4).getNumber()) found = true;
+            if (hand.get(2).getNumber() == hand.get(3).getNumber() && hand.get(3).getNumber() == hand.get(4).getNumber())
+                found = true;
         }
         return found;
     }
@@ -110,7 +115,7 @@ public class Combinations {
         boolean found = false;
         int i = 0, equalCards = 1;
         while (equalCards < 4 && i < hand.size() - 1) {
-            if (hand.get(i).getNumber() == hand.get(i+1).getNumber()) {
+            if (hand.get(i).getNumber() == hand.get(i + 1).getNumber()) {
                 equalCards++;
             } else equalCards = 1;
             i++;
@@ -122,8 +127,8 @@ public class Combinations {
         int found = 0;
         boolean flush = true;
         for (int i = 0; i < hand.size() - 1; i++) {
-            if (hand.get(i).getSuit() != hand.get(i+1).getSuit()) flush = false;
-            if ((hand.get(i+1).getNumber() - hand.get(i).getNumber()) == 1 || (hand.get(i+1).getNumber() - hand.get(i).getNumber()) == 9)
+            if (hand.get(i).getSuit() != hand.get(i + 1).getSuit()) flush = false;
+            if ((hand.get(i + 1).getNumber() - hand.get(i).getNumber()) == 1 || (hand.get(i + 1).getNumber() - hand.get(i).getNumber()) == 9)
                 found++;
         }
         return (found == 4 && flush);

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018. Bosco Domingo & Luis de Marcos
+ */
+
 package main_app;
 
 import main_app.rounds.BettingRound;
@@ -52,8 +56,8 @@ public class Table {
         this.players = players;
     }
 
-    private void returnHandsToDeck(Deck deck){
-        for(int i=0;i<this.players.length;i++){
+    private void returnHandsToDeck(Deck deck) {
+        for (int i = 0; i < this.players.length; i++) {
             deck.returnCardsToDeck(players[i].getHand().getCards());
 
         }
