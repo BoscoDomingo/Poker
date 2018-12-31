@@ -23,7 +23,6 @@ public class FinalRound extends Round {
         return checkBestPlayer(players);
     }
 
-
     private int checkBestPlayer(Player[] players) {
         int bestCombination = 0, combination;
         int bestPlayer = -1;

@@ -55,17 +55,6 @@ public class Player {
         return number;
     }
 
-   /* public boolean askIfStillPlaying() {
-        System.out.println("Do you want to keep playing this turn? (Y/N)");
-        Scanner scan = new Scanner(System.in);
-        String selector = scan.nextLine();
-        while (!(selector.equalsIgnoreCase("yes") || selector.equalsIgnoreCase("y") || selector.equalsIgnoreCase("no") || selector.equalsIgnoreCase("n"))) {
-            System.out.println("Please enter a valid answer");
-            selector = scan.nextLine();
-        }
-        return (selector.equalsIgnoreCase("y") || selector.equalsIgnoreCase("yes"));
-    }*/
-
     public ArrayList<Card> drawFromDeck(ArrayList<Card> cardsFromDeck) {
         ArrayList<Card> cardsToReturnToDeck = selectCardsToDiscard(cardsFromDeck.size());
         if (cardsToReturnToDeck != null) {

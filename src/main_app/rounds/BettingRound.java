@@ -45,6 +45,7 @@ public class BettingRound extends Round {
                             break;
                         case 2:
                             goesAllIn(players);
+                            wasRaised = true;
                             break;
                         case 3:
                             System.out.println(players[currentPlayer].getName() + " dropped out of this round");

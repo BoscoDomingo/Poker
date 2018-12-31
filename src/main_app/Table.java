@@ -33,7 +33,7 @@ public class Table {
         this.round = new BettingRound(stillPlayingAfterRound, startingPlayer);
         int pot = round.start(players, deck);
         stillPlayingAfterRound = round.getStillPlaying();
-        System.out.println("\tEND OF DRAWING ROUND\n\n***************************************************\n\n\tSTART OF SHOWDOWN");
+        System.out.println("\tEND OF BETTING ROUND\n\n***************************************************\n\n\tSTART OF SHOWDOWN");
         this.round = new FinalRound(stillPlayingAfterRound, startingPlayer);
         int winner = round.start(players, deck);
         if (winner != -1) {
